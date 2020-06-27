@@ -13,7 +13,11 @@ const positionRoutes = require('./routes/position.routes')
 
 const app = express()
 
-mongoose.connect(keys.mongoURI, { useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.connect(keys.mongoURI, {
+	useUnifiedTopology: true,
+	useNewUrlParser: true,
+	useCreateIndex: true
+})
 	.then(() => console.log('MongoDB connected...'))
 	.catch(error => console.log(error))
 
