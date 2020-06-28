@@ -3,8 +3,12 @@ const controller = require('../controllers/analytics.controller')
 const passport = require('passport')
 const router = express.Router()
 
-router.get('/overview', passport.authenticate('jwt', { session: false }), controller.overview)
+router.get('/overview',
+	passport.authenticate('jwt', { session: false }),
+	controller.overview)
 
-router.get('/analytics', passport.authenticate('jwt', { session: false }), controller.analytics)
+router.get('/analytics',
+	passport.authenticate('jwt', { session: false }),
+	controller.analytics)
 
 module.exports = router
