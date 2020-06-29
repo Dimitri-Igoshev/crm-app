@@ -60,6 +60,7 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
       }),
       error => {
         this.openSnackBar(error.error.message, 'Close')
+        this.form.reset()
         this.form.enable()
       }
     )
