@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="shadow">
+	<span>CRM App</span>
+	<span class="example-spacer"></span>
+	<button
+			routerLink="/login"
+			routerLinkActive="active"
+			mat-flat-button color="primary"
+			class="menu-button"
+	>
+		Login
+	</button>
+	<button
+			routerLink="/registration"
+			routerLinkActive="active"
+			mat-flat-button color="primary"
+			class="menu-button"
+	>
+		Registration
+	</button>
+</mat-toolbar>
+
+<div class="container">
+	<mat-card>
+		<router-outlet></router-outlet>
+	</mat-card>
+</div>

@@ -1,0 +1,25 @@
+@import "~src/styles";
+
+h1 {
+  text-align: center;
+  //color: #ff4081;
+  color: $main;
+}
+
+//input {
+//  color: #3f51b5;
+//}
+
+.icon {
+  color: $grey;
+  font-size: 100%;
+}
+
+.button {
+  margin-top: 35px;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
