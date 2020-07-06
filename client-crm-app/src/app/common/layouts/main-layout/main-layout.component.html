@@ -1,1 +1,72 @@
-<p>main-layout works!</p>
+<mat-toolbar color="primary" class="shadow">
+	<mat-icon style="margin-left: 10px; cursor: pointer;" (click)="drawer.toggle()">menu</mat-icon>
+	<span style="margin-left: 10px">CRM App</span>
+	<span class="example-spacer"></span>
+	<button
+			routerLink="/login"
+			routerLinkActive="active"
+			mat-flat-button color="primary"
+			class="menu-button"
+			(click)="logout()"
+	>
+		Log Out
+	</button>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+	<mat-drawer #drawer isOpen="true" class="example-sidenav" mode="side" opened="opend">
+		<ul>
+			<li *ngFor="let link of links">
+				<button
+						[routerLink]="[link.url]"
+						routerLinkActive="active-nav"
+						mat-flat-button
+						value="left"
+						class="side-menu-button"
+				>
+					{{link.name}}
+				</button>
+			</li>
+		</ul>
+	</mat-drawer>
+	
+	<div class="fab-buttons">
+		<button *ngIf="focus"
+		        routerLink="/order/new"
+		        mat-mini-fab color="primary"
+		        class="mini-fab"
+		        aria-label=""
+		        (click)="focus=false"
+		        matTooltip="Add new order"
+		        matTooltipPosition="before"
+		>
+			<mat-icon>post_add</mat-icon>
+		</button>
+		
+		<button *ngIf="focus"
+		        routerLink="/categories/new"
+		        mat-mini-fab color="primary"
+		        class="mini-fab"
+		        aria-label="Category"
+		        (click)="focus=false"
+		        matTooltip="Add new category"
+		        matTooltipPosition="before"
+		>
+			<mat-icon>list</mat-icon>
+		</button>
+		
+		<button
+				mat-fab color="accent"
+				class="fab"
+				aria-label="Add"
+				(click)="focus=!focus"
+		>
+			<mat-icon *ngIf="!focus">add</mat-icon>
+			<mat-icon *ngIf="focus">remove</mat-icon>
+		</button>
+	</div>
+	
+	<router-outlet></router-outlet>
+	
+</mat-drawer-container>
+

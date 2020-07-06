@@ -5,6 +5,12 @@ import { MainLayoutComponent } from './common/layouts/main-layout/main-layout.co
 import { LoginPageComponent } from './login-page/login-page.component'
 import { RegisterPageComponent } from './register-page/register-page.component'
 import { AuthGuard } from './common/classes/auth.guard'
+import { OverviewPageComponent } from './overview-page/overview-page.component'
+import { AnalyticsPageComponent } from './analytics-page/analytics-page.component'
+import { HistoryPageComponent } from './history-page/history-page.component'
+import { OrderPageComponent } from './order-page/order-page.component'
+import { CategoriesPageComponent } from './categories-page/categories-page.component'
+import { EditCategoryPageComponent } from './categories-page/edit-category-page/edit-category-page.component'
 
 const routes: Routes = [
   {
@@ -18,7 +24,15 @@ const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     canActivate: [AuthGuard],
-    children: []
+    children: [
+      { path: 'overview', component: OverviewPageComponent },
+      { path: 'analytics', component: AnalyticsPageComponent },
+      { path: 'history', component: HistoryPageComponent },
+      { path: 'order', component: OrderPageComponent },
+      { path: 'categories', component: CategoriesPageComponent },
+      { path: 'categories/new', component: EditCategoryPageComponent },
+      { path: 'categories/:id', component: EditCategoryPageComponent },
+    ]
   }
 ]
 

@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="title">
+		<h1>Assortment</h1>
+		<button
+				mat-raised-button
+				routerLink="/categories/new"
+		>
+			Add product category
+		</button>
+	</div>
+	
+	<ng-template #loader>
+		<app-loader></app-loader>
+	</ng-template>
+	
+	<ng-template #empty>
+		<span class="empty-text">Categories are missing.</span>
+	</ng-template>
+	
+	<div *ngIf="categories$ | async as categories; else loader">
+		<mat-selection-list
+				multiple="false"
+				*ngIf="categories.length !== 0; else empty"
+		>
+			<mat-list-option
+					*ngFor="let category of categories"
+					[routerLink]="['/categories', category._id]"
+			>
+				<div class="wrapper">
+					<img [src]="category.imageSrc">
+					{{category.title}}
+				</div>
+			</mat-list-option>
+		</mat-selection-list>
+	</div>
+	
+</div>
+
+

@@ -1,0 +1,78 @@
+<div class="container">
+	<div class="title">
+<!--		<h1 *ngIf="isNew">Creating a new category</h1>-->
+<!--		<h1 *ngIf="!isNew">Edit {{currentCategory.title}}</h1>-->
+		<h1>{{isNew ? 'Creating a new category' : title}}</h1>
+		<button
+				*ngIf="!isNew"
+				mat-mini-fab
+				color="primary"
+				matTooltip="Remove category"
+				matTooltipPosition="before"
+				(click)="removeCategory()"
+		>
+			<mat-icon>delete</mat-icon>
+		</button>
+	</div>
+	
+	<div class="edit-block">
+		<div class="text-block">
+			<form
+					[formGroup]="form"
+					(ngSubmit)="onSubmit()"
+			>
+				<mat-form-field appearance="standard">
+					<mat-label>Category title</mat-label>
+					<input
+							formControlName="title"
+							matInput
+							placeholder=""
+							type="text"
+					>
+					<mat-error *ngIf="form.get('title').invalid">
+						{{getTitleMessage()}}
+					</mat-error>
+				</mat-form-field>
+				
+				<div class="buttons">
+					<input
+							type="file"
+							hidden
+							(change)="onFileUpload($event)"
+							#fileInput
+					>
+					
+					<button
+							mat-raised-button
+							type="button"
+							color="primary"
+							(click)="triggerClick()"
+							[disabled]="form.disabled"
+					>
+						Upload image
+					</button>
+					
+					<button
+							mat-raised-button
+							color="accent"
+							type="submit"
+							[disabled]="form.invalid || form.disabled"
+					>
+						{{isNew ? 'Create category' : 'Save changes'}}
+					</button>
+				</div>
+			</form>
+		</div>
+		
+		<mat-card *ngIf="imagePreview" class="image-preview-block">
+			<img mat-card-image [src]="imagePreview">
+		</mat-card>
+	
+	</div>
+	
+	<app-edit-position-page
+			[categoryId]="currentCategory._id"
+			*ngIf="currentCategory?._id"
+	></app-edit-position-page>
+	
+</div>

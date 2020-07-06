@@ -22,7 +22,7 @@ module.exports.findById = async (req, res) => {
 
 module.exports.create = async (req, res) => {
 	const category = new Category({
-		name: req.body.name,
+		title: req.body.title,
 		imageSrc: req.file ? req.file.path : '',
 		user: req.user.id
 	})
@@ -37,7 +37,7 @@ module.exports.create = async (req, res) => {
 module.exports.update = async (req, res) => {
 	try {
 		const updated = {
-			name: req.body.name,
+			title: req.body.title,
 		}
 		if (req.file) updated.imageSrc = req.file.path
 
