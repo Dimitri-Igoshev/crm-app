@@ -1,0 +1,28 @@
+<div class="container">
+	
+	<ng-template #loader>
+		<app-loader></app-loader>
+	</ng-template>
+	
+	<ng-template #empty>
+		<span class="empty-text">Categories are missing.</span>
+	</ng-template>
+	
+	<div *ngIf="categories$ | async as categories; else loader">
+		<div class="cat-container" *ngIf="categories.length !== 0; else empty">
+			<div
+				class="card-link"
+				*ngFor="let category of categories"
+				[routerLink]="['/order', category._id]"
+			>
+				<mat-card class="block">
+					<img *ngIf="category.imageSrc" mat-card-image [src]="category.imageSrc">
+					<span>{{category.title}}</span>
+				</mat-card>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+

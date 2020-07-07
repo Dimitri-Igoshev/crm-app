@@ -1,0 +1,30 @@
+<div class="title">
+	<h1>Your order</h1>
+</div>
+
+<app-order-table></app-order-table>
+
+<hr>
+
+<mat-dialog-actions align="end">
+	<button
+			mat-button
+			mat-dialog-close
+			type="reset"
+			[disabled]="pending"
+	>
+		Cancel
+	</button>
+	
+	<button
+			mat-flat-button
+			color="primary"
+			[mat-dialog-close]="true"
+			type="submit"
+			[disabled]="list.length === 0 || pending"
+			(click)="submit()"
+	>
+		Confirm
+	</button>
+</mat-dialog-actions>
+

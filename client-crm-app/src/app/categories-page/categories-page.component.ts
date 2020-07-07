@@ -14,7 +14,6 @@ export class CategoriesPageComponent implements OnInit {
   }
 
   categories$: Observable<Category[]>
-  categories: Category [] = []
 
   ngOnInit(): void {
     this.categories$ = this.categoriesService.fetch()

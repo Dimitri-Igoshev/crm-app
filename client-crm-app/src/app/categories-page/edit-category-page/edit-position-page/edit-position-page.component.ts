@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core'
+import { Component, Input, OnDestroy, OnInit } from '@angular/core'
 import { PositionsService } from '../../../common/services/positions.service'
 import { Subscription } from 'rxjs'
 import { MatDialog } from '@angular/material/dialog'
@@ -6,6 +6,7 @@ import { PositionDialogComponent } from './position-dialog/position-dialog.compo
 import { Position } from '../../../common/interfaces/position'
 import { CategoriesService } from '../../../common/services/categories.service'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { log } from 'util'
 
 @Component({
   selector: 'app-edit-position-page',
@@ -30,7 +31,8 @@ export class EditPositionPageComponent implements OnInit, OnDestroy {
       .subscribe(positions => {
         this.positions = positions
         this.positionsService.setCurrentPositions(positions)
-      })
+      }
+    )
   }
 
   ngOnDestroy(): void {

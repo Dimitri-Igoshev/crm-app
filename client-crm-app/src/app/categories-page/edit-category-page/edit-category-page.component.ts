@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { ActivatedRoute, Params } from '@angular/router'
+import { ActivatedRoute, Params, Router } from '@angular/router'
 import { CategoriesService } from '../../common/services/categories.service'
 import { switchMap } from 'rxjs/operators'
 import { of } from 'rxjs'
@@ -16,6 +16,7 @@ import { DialogComponent } from './dialog/dialog.component'
 })
 export class EditCategoryPageComponent implements OnInit {
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private categoriesService: CategoriesService,
               private _snackBar: MatSnackBar,
               public dialog: MatDialog) {
@@ -113,7 +114,8 @@ export class EditCategoryPageComponent implements OnInit {
       error => {
         this.form.enable()
         this.openSnackBar(error.error.message, 'Close')
-      }
+      },
+      () => this.router.navigate(['/categories'])
     )
   }
 
