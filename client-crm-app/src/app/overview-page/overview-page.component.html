@@ -1,1 +1,39 @@
-<p>overview-page works!</p>
+<link rel="stylesheet" href="overview-page.component.scss">
+<div class="container">
+	<div class="title">
+		<h1>Overview for yesterday ({{date | date: 'dd.MM.yyyy'}})</h1>
+	</div>
+	
+	<div
+			*ngIf="data$ | async as data; else loader"
+			class="card-wrapper"
+	>
+		<mat-card class="example-card" [class]="data.revenue.isHigher ? 'green' : 'red'">
+			<h2>Revenue</h2>
+			<span class="value">{{data.revenue.yesterday | currency: 'EUR'}}</span>
+			<br>
+			<span class="percent">
+				{{data.revenue.isHigher ? '+' + data.revenue.percent: '-' + data.revenue.percent}} %
+			</span>
+			<p>Your business's revenue was
+				{{data.revenue.percent}} % {{data.revenue.isHigher ? 'higher' : 'below'}} than average yesterday:
+				{{data.revenue.compare | currency: 'EUR'}} per day</p>
+		</mat-card>
+		
+		<mat-card class="example-card" [class]="data.revenue.isHigher ? 'green' : 'red'">
+			<h2>Orders</h2>
+			<span class="value">{{data.orders.yesterday}} {{data.orders.yesterday === 1 ? 'Order' : 'Orders' }}</span>
+			<br>
+			<span class="percent">
+				{{data.orders.isHigher ? '+' + data.orders.percent: '-' + data.orders.percent}} %
+			</span>
+			<p>The number of orders yesterday was
+				{{data.orders.percent}} % {{data.orders.isHigher ? 'higher' : 'below'}} the average:
+				{{data.orders.compare}} Orders per day</p>
+		</mat-card>
+	</div>
+	
+	<ng-template #loader>
+		<app-loader></app-loader>
+	</ng-template>
+</div>
