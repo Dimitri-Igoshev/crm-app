@@ -1,0 +1,73 @@
+@import "~src/styles";
+
+.shadow {
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.menu-button {
+  height: 100%;
+  border-radius: 0;
+}
+
+nemu-button:hover {
+  color: white;
+}
+
+.active {
+  background: $dark;
+}
+
+.example-container {
+  height: calc(100vh - 56px);
+  width: 100vw;
+}
+
+.example-sidenav-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px 0 0 0;
+  min-width: 200px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu-button {
+  width: 100px;
+  min-width: 200px;
+  text-align: left;
+  padding: 5px 30px;
+  border-radius: 0;
+}
+
+.active-nav {
+  color: $main;
+}
+
+.fab-buttons {
+  z-index: 3;
+  position: absolute;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mini-fab {
+  margin-bottom: 20px;
+}

@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>{{isNew ? 'Add new position' : 'Edit position'}}</h2>
+
+<div class="edit-block">
+	<div class="text-block">
+		<form
+				[formGroup]="form"
+				(ngSubmit)="onSubmit()"
+		>
+			<mat-form-field appearance="standard">
+				<mat-label>Position title</mat-label>
+				<input
+						formControlName="title"
+						matInput
+						placeholder=""
+						type="text"
+				>
+				<mat-error *ngIf="form.get('title').invalid">
+					{{getTitleMessage()}}
+				</mat-error>
+			</mat-form-field>
+			
+			<mat-form-field appearance="standard">
+				<mat-label>Position price</mat-label>
+				<input
+						formControlName="price"
+						matInput
+						placeholder=""
+						type="number"
+				>
+				<mat-error *ngIf="form.get('title').invalid">
+					{{getPriceMessage()}}
+				</mat-error>
+			</mat-form-field>
+			
+			<mat-dialog-actions align="center">
+				<button mat-button mat-dialog-close type="reset">Cancel</button>
+				<button
+						mat-flat-button
+						color="primary"
+						[mat-dialog-close]="true"
+						[disabled]="form.invalid || form.disabled"
+						type="submit"
+				>
+					{{isNew ? 'Add' : 'Save'}}
+				</button>
+			</mat-dialog-actions>
+		</form>
+	</div>
+</div>
+

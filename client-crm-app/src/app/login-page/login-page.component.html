@@ -1,0 +1,42 @@
+<form
+		[formGroup]="form"
+		(ngSubmit)="onSubmit()"
+>
+	<h1>Sign In</h1>
+	
+	<mat-form-field appearance="standard">
+		<mat-label>email</mat-label>
+		<input
+				matInput placeholder=""
+				formControlName="email"
+				type="email"
+		>
+		<mat-icon matSuffix class="icon">email</mat-icon>
+		<mat-error *ngIf="form.get('email').invalid">
+			{{getEmailErrorMessage()}}
+		</mat-error>
+	</mat-form-field>
+	
+	<mat-form-field appearance="standard">
+		<mat-label>password</mat-label>
+		<input
+				matInput placeholder=""
+				formControlName="password"
+				type="password"
+		>
+		<mat-icon matSuffix class="icon">lock</mat-icon>
+		<mat-error *ngIf="form.get('password').invalid">
+			{{getPasswordMessage()}}
+		</mat-error>
+	</mat-form-field>
+	
+	<button
+			mat-raised-button
+			color="primary"
+			class="button"
+			type="submit"
+			[disabled]="form.invalid || form.disabled"
+	>
+		Log in to your account
+	</button>
+</form>

@@ -1,0 +1,38 @@
+@import "~src/styles";
+
+.shadow {
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.menu-button {
+  height: 100%;
+  border-radius: 0;
+}
+
+nemu-button:hover {
+  color: white;
+}
+
+.active {
+  background: $dark;
+}
+
+.container {
+  height: calc(100vh - 56px);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 30px 60px 30px;
+}
+

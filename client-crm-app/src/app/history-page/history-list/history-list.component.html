@@ -1,0 +1,58 @@
+<ng-template #loader>
+	<app-loader></app-loader>
+</ng-template>
+
+<ng-template #empty>
+	<span class="empty-text">Orders are missing.</span>
+</ng-template>
+
+<div *ngIf="dataSource; else loader">
+	<table *ngIf="dataSource.length !== 0; else empty" mat-table [dataSource]="dataSource" class="table">
+		
+		<div>
+			<ng-container matColumnDef="order">
+				<th mat-header-cell *matHeaderCellDef style="width: 10%"> № </th>
+				<td mat-cell *matCellDef="let element"> {{element.order}} </td>
+			</ng-container>
+			
+			<ng-container matColumnDef="date">
+				<th mat-header-cell *matHeaderCellDef style="width: 30%"> Date </th>
+				<td mat-cell *matCellDef="let element"> {{element.date | date: 'dd.MM.yyyy'}} </td>
+			</ng-container>
+			
+			<ng-container matColumnDef="time">
+				<th mat-header-cell *matHeaderCellDef style="width: 30%"> Time </th>
+				<td mat-cell *matCellDef="let element"> {{element.date | date: 'HH:mm:ss'}} </td>
+			</ng-container>
+			
+			<ng-container matColumnDef="amount">
+				<th mat-header-cell *matHeaderCellDef style="width: 30%"> Amount </th>
+				<td mat-cell *matCellDef="let element" class="flex">
+					<span> {{computePrice(element) | currency: 'EUR'}} </span>
+					<button
+							mat-icon-button
+							color="primary"
+							(click)="selectOrder(element)"
+					>
+						<mat-icon>read_more</mat-icon>
+					</button>
+				</td>
+			</ng-container>
+		</div>
+		
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	
+	</table>
+</div>
+
+<div class="btn-wrapper">
+	<button
+			[disabled]="noMoreOrders"
+			(click)="loadMore()"
+			mat-raised-button
+	>
+		{{noMoreOrders ? 'No more orders' : 'Load more'}}
+	</button>
+</div>
+

@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="title">
+		<h2 class="title-h2">Positions</h2>
+		<button
+			mat-raised-button
+			class="add-position"
+			(click)="openPositionDialog()"
+		>
+			Add position
+		</button>
+	</div>
+	
+	<ng-template #loader>
+		<app-loader></app-loader>
+	</ng-template>
+	
+	<ng-template #empty>
+		<span class="empty-text">Positions are missing.</span>
+	</ng-template>
+	
+	<div *ngIf="positions; else loader">
+		<mat-selection-list
+			multiple="false"
+			*ngIf="positions.length !== 0, else empty"
+		>
+			<mat-list-option *ngFor="let position of positions"
+			>
+				<div class="wrapper">
+					<span (click)="onPositionSelect(position)">{{position.name}} ( {{position.cost}} Euro )</span>
+					<mat-icon (click)="removePosition(position)">delete</mat-icon>
+				</div>
+			</mat-list-option>
+		</mat-selection-list>
+	</div>
+
+</div>

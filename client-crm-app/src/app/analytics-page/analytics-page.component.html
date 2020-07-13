@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="title">
+		<h1>Analytics</h1>
+	</div>
+	
+	<div [style.display]="pending ? 'none' : 'block'">
+		<div class="average-price">
+			<p>Average ticket <strong>{{average | currency: 'EUR'}}</strong></p>
+		</div>
+		
+		<div class="analytics-block">
+			<h2>Revenue</h2>
+			<canvas #revenue height="100"></canvas>
+		</div>
+		
+		<div class="analytics-block">
+			<h2>Orders</h2>
+			<canvas #orders height="100"></canvas>
+		</div>
+	</div>
+	
+	<app-loader *ngIf="pending"></app-loader>
+</div>

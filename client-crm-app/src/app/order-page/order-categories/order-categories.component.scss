@@ -1,0 +1,48 @@
+.container {
+  padding: 0 30px;
+}
+
+.cat-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.mat-card {
+  margin-bottom: 30px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 175px;
+  cursor: pointer;
+}
+
+mat-card-image {
+  margin: 0;
+}
+
+.mat-card-image:first-child {
+  margin: 0;
+}
+
+img {
+  height: 110px;
+  width: 110px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+}
+
+span {
+  padding: 0 15px;
+  text-align: center;
+}
+
+.card-link {
+  outline: none;
+}
+
