@@ -44,7 +44,7 @@ export class OrderDialogComponent implements OnInit, OnDestroy {
         this.openSnackBar(`Your order №${newOrder.order} was received`, 'Close')
       },
       error => {
-        this.openSnackBar(error.error.message, 'Close')
+        this.openSnackBar(error.error.message || 'Error, try again', 'Close')
       },
       () => {
         this.orderService.clear()

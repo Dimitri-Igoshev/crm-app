@@ -41,6 +41,12 @@ import { OrderPositionsComponent } from './order-page/order-positions/order-posi
 import { OrderDialogComponent } from './order-page/order-dialog/order-dialog.component'
 import { PositionsTableComponent } from './order-page/order-positions/positions-table/positions-table.component'
 import { OrderTableComponent } from './order-page/order-positions/order-table/order-table.component'
+import { HistoryListComponent } from './history-page/history-list/history-list.component'
+import { HistoryFilterComponent } from './history-page/history-filter/history-filter.component'
+import { HistoryDialogComponent } from './history-page/history-dialog/history-dialog.component'
+import { HistoryDialogListComponent } from './history-page/history-dialog-list/history-dialog-list.component'
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker'
 
 @NgModule({
   declarations: [
@@ -63,7 +69,11 @@ import { OrderTableComponent } from './order-page/order-positions/order-table/or
     OrderPositionsComponent,
     OrderDialogComponent,
     PositionsTableComponent,
-    OrderTableComponent
+    OrderTableComponent,
+    HistoryListComponent,
+    HistoryFilterComponent,
+    HistoryDialogComponent,
+    HistoryDialogListComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +96,9 @@ import { OrderTableComponent } from './order-page/order-positions/order-table/or
     DragDropModule,
     MatDialogModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    MatDatepickerModule
   ],
   providers: [
     {

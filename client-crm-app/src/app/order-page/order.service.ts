@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { Position } from '../common/interfaces/position'
-import { OrderPosition } from '../common/interfaces/order'
+import { Order, OrderPosition } from '../common/interfaces/order'
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class OrderService {
 
   public list: OrderPosition[] = []
   public price = 0
+  currentOrder: Order
 
   add(position: Position) {
     const orderPosition: OrderPosition = Object.assign({}, {
@@ -46,5 +48,12 @@ export class OrderService {
     return this.price
   }
 
+  getCurrentOrder(): Order {
+    return this.currentOrder
+  }
+
+  setCurrentOrder(order: Order): void {
+    this.currentOrder = order
+  }
 
 }

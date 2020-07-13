@@ -1,0 +1,20 @@
+<div class="title">
+	<h1>Order №{{order.order}}</h1>
+</div>
+
+<app-history-dialog-list [order]="order"></app-history-dialog-list>
+
+<h2>Total cost {{computeTotalPrice() | currency: 'EUR'}}</h2>
+
+<hr>
+
+<mat-dialog-actions align="end">
+	<button
+			mat-button
+			mat-dialog-close
+			type="reset"
+	>
+		Cancel
+	</button>
+</mat-dialog-actions>
+

@@ -1,1 +1,31 @@
-<p>history-page works!</p>
+<div class="container">
+	<div class="title">
+		<h1>Order history</h1>
+		<button
+				mat-mini-fab
+				color="primary"
+				matTooltip="{{isFilterOpened ? 'Close filter' : 'Open filter'}}"
+				matTooltipPosition="before"
+				(click)="isFilterOpened = !isFilterOpened"
+		>
+			<mat-icon>filter_list</mat-icon>
+		</button>
+	</div>
+	
+	<app-history-filter
+			*ngIf="isFilterOpened"
+			[orders]="orders"
+	></app-history-filter>
+	
+	<app-history-list
+			*ngIf="isLoaded; else loader"
+			[orders]="orders"
+			[noMoreOrders]="noMoreOrders"
+			(onLoadMore)="loadMore()"
+	></app-history-list>
+	
+	<ng-template #loader>
+		<app-loader></app-loader>
+	</ng-template>
+
+</div>
